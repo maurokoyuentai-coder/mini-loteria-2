@@ -1,0 +1,54 @@
+#include <stdio.h>
+#include <locale.h>
+
+int soma(int a, int b)
+{
+    return (2*a+3*b)/5;
+}
+
+int main()
+{
+    setlocale(LC_ALL, "Portuguese");
+
+    int num1, num2;
+    printf("Digite um número: ");
+    scanf("%d", &num1);
+    printf("Digite um número: ");
+    scanf("%d", &num2);
+
+    printf("A soma dos números %d e %d é %d\n",num1, num2, soma(num1,num2));
+    printf("A soma dos números -%d e -%d é %d\n",num1, num2, soma(-num1,-num2));
+    return 0;
+
+
+int main() {
+    int sorteados[NUMEROS_SORTEADOS];
+    int i, j, repetido;
+
+    srand(time(NULL));
+
+    printf("=== MINI LOTERIA ===\n");
+    printf("Numeros sorteados:\n");
+
+    for(i = 0; i < NUMEROS_SORTEADOS; i++) {
+        do {
+            repetido = 0;
+            sorteados[i] = rand() % MAX_NUMERO + 1;
+
+
+            for(j = 0; j < i; j++) {
+                if(sorteados[i] == sorteados[j]) {
+                    repetido = 1;
+                    break;
+                }
+            }
+
+        } while(repetido);
+
+        printf("%d ", sorteados[i]);
+    }
+
+    printf("\n");
+
+    return 0;
+}
